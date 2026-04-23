@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Web & Core Concepts - Exam Answers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header .meta {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .question {
+            margin-bottom: 35px;            page-break-inside: avoid;
+        }
+        
+        .question h2 {
+            background: #34495e;
+            color: white;
+            padding: 12px 15px;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .section {
+            margin-bottom: 12px;
+        }
+        
+        .section strong {
+            color: #2c3e50;
+            display: inline-block;
+            min-width: 100px;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            color: #2980b9;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        
+        pre {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        code {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 13px;
+        }        
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        table th {
+            background: #34495e;
+            color: white;
+            font-weight: bold;
+        }
+        
+        table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 10px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);            z-index: 1000;
+        }
+        
+        .print-btn:hover {
+            background: #2980b9;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 20px;
+                max-width: 100%;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+            
+            .question {
+                page-break-inside: avoid;
+            }
+            
+            pre {
+                page-break-inside: avoid;
+            }
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">📄 Print / Save as PDF</button>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Java Web & Core Concepts – 8-Mark Exam Answers</h1>
+            <div class="meta">
+                <p><strong>Prepared for:</strong> Ajay</p>
+                <p><strong>Date:</strong> April 24, 2026</p>            </div>
+        </div>
+
+        <div class="question">
+            <h2>1. Explain Java Server Pages (JSP) with Example</h2>
+            <div class="section">
+                <span class="section-title">Definition:</span>
+                JSP is a server-side Java technology that allows developers to embed Java code within HTML to create dynamic web pages.
+            </div>
+            <div class="section">
+                <span class="section-title">Key Concepts:</span>
+                <ul>
+                    <li>Translated into Servlets by the JSP container on first request</li>
+                    <li>Components: Directives (<code><%@ %></code>), Scriptlets (<code><% %></code>), Expressions (<code><%= %></code>), Declarations (<code><%! %></code>), Standard Actions</li>
+                    <li>Lifecycle: Translation → Compilation → Initialization → Execution → Cleanup</li>
+                </ul>
+            </div>
+            <div class="section">
+                <span class="section-title">Example:</span>
+                <pre><code><%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<html>
+<body>
+  <h2>Welcome, <%= request.getParameter("user") %>!</h2>
+  <p>Server Time: <%= new java.util.Date() %></p>
+</body>
+</html></code></pre>
+            </div>
+            <div class="section">
+                <span class="section-title">Significance:</span>
+                Separates presentation from business logic, simplifies dynamic HTML generation, supports JSTL/EL, and acts as the View layer in MVC architecture.
+            </div>
+        </div>
+
+        <div class="question">
+            <h2>2. Explain Session Management in Java Web Applications</h2>
+            <div class="section">
+                <span class="section-title">Definition:</span>
+                Session management maintains user-specific state across multiple HTTP requests, overcoming HTTP's stateless nature.
+            </div>
+            <div class="section">
+                <span class="section-title">Key Techniques:</span>
+                <ul>
+                    <li><strong>HttpSession:</strong> Server-side storage via <code>request.getSession()</code>, <code>setAttribute()</code>, <code>getAttribute()</code></li>
+                    <li><strong>URL Rewriting:</strong> Appends <code>;jsessionid=...</code> to URLs</li>
+                    <li><strong>Hidden Form Fields:</strong> Passes state via <code><input type="hidden"></code></li>
+                    <li><strong>Cookies:</strong> Stores session ID on the client</li>
+                </ul>
+            </div>
+            <div class="section">
+                <span class="section-title">Example:</span>                <pre><code>HttpSession session = request.getSession();
+session.setAttribute("username", "Ajay");
+String user = (String) session.getAttribute("username");</code></pre>
+            </div>
+            <div class="section">
+                <span class="section-title">Significance:</span>
+                Essential for authentication, shopping carts, and personalized UIs. HttpSession is secure, container-managed, and supports timeout configuration.
+            </div>
+        </div>
+
+        <div class="question">
+            <h2>3. Explain Insert Operation in JDBC with an Example</h2>
+            <div class="section">
+                <span class="section-title">Steps:</span>
+                Load driver → Establish connection → Prepare SQL → Set parameters → Execute → Close resources
+            </div>
+            <div class="section">
+                <span class="section-title">Key Concepts:</span>
+                Use <code>PreparedStatement</code> to prevent SQL injection and improve performance via precompilation.
+            </div>
+            <div class="section">
+                <span class="section-title">Example:</span>
+                <pre><code>String sql = "INSERT INTO employees (name, dept) VALUES (?, ?)";
+try (Connection conn = DriverManager.getConnection(url, user, pass);
+     PreparedStatement pstmt = conn.prepareStatement(sql)) {
+    pstmt.setString(1, "Ajay");
+    pstmt.setString(2, "IT");
+    int rows = pstmt.executeUpdate();
+    System.out.println(rows + " row(s) inserted.");
+}</code></pre>
+            </div>
+            <div class="section">
+                <span class="section-title">Significance:</span>
+                <code>executeUpdate()</code> returns affected row count. Try-with-resources ensures automatic cleanup. Parameter binding enhances security and performance.
+            </div>
+        </div>
+
+        <div class="question">
+            <h2>4. Explain Delete Operation in JDBC with Example</h2>
+            <div class="section">
+                <span class="section-title">Mechanism:</span>
+                Uses <code>DELETE FROM table WHERE condition</code> executed via <code>PreparedStatement</code>.
+            </div>
+            <div class="section">
+                <span class="section-title">Key Points:</span>
+                Always include a WHERE clause to avoid accidental full-table deletion. Returns integer count of deleted rows.
+            </div>
+            <div class="section">
+                <span class="section-title">Example:</span>
+                <pre><code>String sql = "DELETE FROM employees WHERE id = ?";try (Connection conn = DriverManager.getConnection(url, user, pass);
+     PreparedStatement pstmt = conn.prepareStatement(sql)) {
+    pstmt.setInt(1, 105);
+    int deleted = pstmt.executeUpdate();
+    if (deleted > 0) System.out.println("Record deleted successfully.");
+}</code></pre>
+            </div>
+            <div class="section">
+                <span class="section-title">Significance:</span>
+                Supports transactions (<code>conn.setAutoCommit(false)</code>). Proper error handling and parameterization prevent data loss and injection attacks.
+            </div>
+        </div>
+
+        <div class="question">
+            <h2>5. Explain List in Java Collection Framework with Types & Example</h2>
+            <div class="section">
+                <span class="section-title">Definition:</span>
+                <code>List<E></code> is an ordered collection that allows duplicate elements and provides positional access via index.
+            </div>
+            <div class="section">
+                <span class="section-title">Types:</span>
+                <ul>
+                    <li><strong>ArrayList:</strong> Resizable array, fast random access, slower mid-list insertions</li>
+                    <li><strong>LinkedList:</strong> Doubly-linked list, fast insertions/deletions, slower random access</li>
+                    <li><strong>Vector/Stack:</strong> Legacy thread-safe classes (prefer ArrayList + Collections.synchronizedList())</li>
+                </ul>
+            </div>
+            <div class="section">
+                <span class="section-title">Example:</span>
+                <pre><code>List<String> list = new ArrayList<>();
+list.add("Java"); list.add("Python"); list.add("Java");
+System.out.println(list.get(1)); // Output: Python</code></pre>
+            </div>
+            <div class="section">
+                <span class="section-title">Significance:</span>
+                Implements Iterable, Collection, List. Supports Iterator, ListIterator, subList(), and Collections.sort().
+            </div>
+        </div>
+
+        <div class="question">
+            <h2>6. Explain HTTP Request & Response Mechanism in Java</h2>
+            <div class="section">
+                <span class="section-title">HTTP Overview:</span>
+                Stateless client-server protocol using request-response cycle.
+            </div>
+            <div class="section">
+                <span class="section-title">Java Mapping:</span>
+                <code>HttpServletRequest</code> and <code>HttpServletResponse</code> in Servlet API.
+            </div>
+            <div class="section">                <span class="section-title">Components:</span>
+                <ul>
+                    <li><strong>Request:</strong> Method (GET/POST), URL, Headers, Parameters, Body</li>
+                    <li><strong>Response:</strong> Status Code, Headers, Content-Type, Body</li>
+                </ul>
+            </div>
+            <div class="section">
+                <span class="section-title">Example:</span>
+                <pre><code>protected void doGet(HttpServletRequest req, HttpServletResponse res) {
+    res.setContentType("text/html");
+    String name = req.getParameter("user");
+    PrintWriter out = res.getWriter();
+    out.println("<h1>Hello, " + name + "</h1>");
+}</code></pre>
+            </div>
+            <div class="section">
+                <span class="section-title">Significance:</span>
+                Enables dynamic content generation. Headers manage caching, security, sessions. Java's API abstracts low-level HTTP parsing.
+            </div>
+        </div>
+
+        <div class="question">
+            <h2>7. Explain DOM in JavaScript with Example</h2>
+            <div class="section">
+                <span class="section-title">Definition:</span>
+                Document Object Model is a tree-like, in-memory representation of HTML/XML documents, enabling programmatic manipulation.
+            </div>
+            <div class="section">
+                <span class="section-title">Key Operations:</span>
+                Select elements, modify content/attributes, create/delete nodes, handle events.
+            </div>
+            <div class="section">
+                <span class="section-title">Example:</span>
+                <pre><code><button onclick="changeText()">Click</button>
+<p id="msg">Hello</p>
+<script>
+function changeText() {
+  document.getElementById("msg").textContent = "Updated via DOM!";
+}
+</script></code></pre>
+            </div>
+            <div class="section">
+                <span class="section-title">Significance:</span>
+                Foundation for dynamic UIs. Methods: <code>getElementById()</code>, <code>querySelector()</code>, <code>createElement()</code>, <code>appendChild()</code>. Enables frameworks (React, Vue) and event-driven interactions.
+            </div>
+        </div>
+
+        <div class="question">
+            <h2>8. Explain public, private, protected, default with Example</h2>
+            <div class="section">                <span class="section-title">Definition:</span>
+                Access modifiers control visibility of classes, methods, and fields.
+            </div>
+            <div class="section">
+                <table>
+                    <tr>
+                        <th>Modifier</th>
+                        <th>Class</th>
+                        <th>Package</th>
+                        <th>Subclass</th>
+                        <th>World</th>
+                    </tr>
+                    <tr>
+                        <td><code>private</code></td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td><code>default</code></td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td><code>protected</code></td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td><code>public</code></td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="section">
+                <span class="section-title">Example:</span>
+                <pre><code>class AccessDemo {
+    private int p = 1;
+    int d = 2;          // default
+    protected int pr = 3;
+    public int pub = 4;
+}</code></pre>            </div>
+            <div class="section">
+                <span class="section-title">Significance:</span>
+                Enforces encapsulation, hides implementation details, prevents unauthorized access, and supports inheritance design.
+            </div>
+        </div>
+
+        <div class="question">
+            <h2>9. Explain Select Operation in JDBC with Example</h2>
+            <div class="section">
+                <span class="section-title">Mechanism:</span>
+                Retrieves data using SELECT via <code>executeQuery()</code>, returning a <code>ResultSet</code>.
+            </div>
+            <div class="section">
+                <span class="section-title">Steps:</span>
+                Connect → Prepare → Execute → Iterate ResultSet → Extract data → Close
+            </div>
+            <div class="section">
+                <span class="section-title">Example:</span>
+                <pre><code>String sql = "SELECT name, salary FROM employees WHERE dept = ?";
+try (Connection conn = DriverManager.getConnection(url, user, pass);
+     PreparedStatement pstmt = conn.prepareStatement(sql)) {
+    pstmt.setString(1, "IT");
+    ResultSet rs = pstmt.executeQuery();
+    while (rs.next()) {
+        System.out.println(rs.getString("name") + ": " + rs.getDouble("salary"));
+    }
+}</code></pre>
+            </div>
+            <div class="section">
+                <span class="section-title">Significance:</span>
+                ResultSet cursor starts before first row. Use <code>rs.next()</code> to traverse. Always close ResultSet to prevent memory leaks.
+            </div>
+        </div>
+
+        <div class="question">
+            <h2>10. Define JDBC & Explain Main Components</h2>
+            <div class="section">
+                <span class="section-title">Definition:</span>
+                Java Database Connectivity (JDBC) is a standard API for connecting Java applications to relational databases.
+            </div>
+            <div class="section">
+                <span class="section-title">Components:</span>
+                <ul>
+                    <li><strong>DriverManager:</strong> Manages DB drivers & establishes connections</li>
+                    <li><strong>Connection:</strong> Represents session with DB</li>
+                    <li><strong>Statement/PreparedStatement/CallableStatement:</strong> Executes SQL</li>
+                    <li><strong>ResultSet:</strong> Holds query results</li>
+                    <li><strong>SQLException:</strong> Handles DB-related exceptions</li>
+                </ul>            </div>
+            <div class="section">
+                <span class="section-title">Architecture Flow:</span>
+                Java App → JDBC API → JDBC Driver (Type 1–4) → Database
+            </div>
+            <div class="section">
+                <span class="section-title">Significance:</span>
+                Database-agnostic, supports transactions, connection poolin
